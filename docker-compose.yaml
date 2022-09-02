@@ -1,0 +1,26 @@
+version: '3.7'
+services:
+    templatedb:
+        image: postgres:13.8
+        restart: always
+        env_file:
+          - dbenv.env
+        ports:
+          - '5432:5432'
+        volumes:
+          - templatedb:/var/lib/postgresql/data
+          # if want sql to run at startup, can use below
+          # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+    api:
+        build:
+          context: .
+        ports:
+          - "8080:8080"
+        volumes:
+        - ./:/usr/src/app
+        depends_on:
+          - templatedb
+        env_file:
+          - dbenv.env
+volumes:
+  templatedb:
