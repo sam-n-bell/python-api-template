@@ -13,7 +13,7 @@ router = APIRouter(
 def check_db_connection():
     successful = pg.validate_pg_connection()
     return DBCheck(
-        status="connected" if successful else "no connection",
+        available=successful,
         details="unable to connect; check connection string" if not successful else None,
         name=PG_DB
     )
@@ -23,5 +23,5 @@ def check_db_connection():
 def check_api_up():
     return System(
         name=APP_NAME,
-        status="up"
+        available=True
     )
