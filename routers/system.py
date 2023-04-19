@@ -1,6 +1,6 @@
 from fastapi import APIRouter
 from models.responses.healthcheck import DBCheck, System
-from settings import PG_DB, APP_NAME
+from settings import PG_DB
 from database.utils import validate_db_connection, get_postgres_conn_str, get_db_session
 
 router = APIRouter(
@@ -20,6 +20,5 @@ def check_postgres_connection():
 @router.get("/", response_model=System, response_model_exclude_unset=True)
 def check_api_up():
     return System(
-        name=APP_NAME,
         available=True
     )

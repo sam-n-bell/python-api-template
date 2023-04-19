@@ -9,6 +9,3 @@ PG_DB = os.getenv("POSTGRES_DB")
 PG_USER = os.getenv("POSTGRES_USER")
 PG_PWD = os.getenv("POSTGRES_PASSWORD")
 PG_PORT = os.getenv("POSTGRES_PORT")
-
-
-APP_NAME = os.getenv("APP_NAME", "template app")
