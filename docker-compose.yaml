@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-    templatedb:
+    postgres:
         image: postgres:13.8
         restart: always
         env_file:
@@ -8,7 +8,7 @@ services:
         ports:
           - '5432:5432'
         volumes:
-          - templatedb:/var/lib/postgresql/data
+          - postgres:/var/lib/postgresql/data
           # if want sql to run at startup, can use below
           # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
     api:
@@ -20,11 +20,11 @@ services:
         volumes:
         - ./:/usr/src/app
         depends_on:
-          - templatedb
+          - postgres
         env_file:
           - .env
 volumes:
-  templatedb:
+  postgres:
 
 
 #    docker-compose run web alembic revision --autogenerate -m "First migration"
