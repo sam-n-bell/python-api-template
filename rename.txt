@@ -1,0 +1,3 @@
+sed -i -e 's/template/app/g' *.py
+
+and rm *-e
