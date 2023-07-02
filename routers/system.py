@@ -9,7 +9,7 @@ router = APIRouter(
 )
 
 
-@router.get("/dbcheck", response_model=DBCheck, response_model_exclude_unset=True)
+@router.get("/postgres", response_model=DBCheck, response_model_exclude_unset=True)
 def check_postgres_connection():
     return validate_db_connection(
         db_session=get_db_session(get_postgres_conn_str()),
