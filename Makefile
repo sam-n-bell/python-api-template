@@ -1,3 +1,3 @@
 dev:
-	docker-compose up --build
+	docker-compose up {{template}}_api
 
