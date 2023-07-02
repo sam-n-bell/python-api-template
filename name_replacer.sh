@@ -1,5 +1,6 @@
-NAME=Pflugerville
+NAME=$1
 
-sed -i -e 's/{{template}}/$NAME/g' *.py
+find . -type f \( -name "*.yaml" -o -name "*.py" \) -exec sed -i "s/{{template_name}}/\L$NAME/g" {} +
 
 and rm *-e
+
