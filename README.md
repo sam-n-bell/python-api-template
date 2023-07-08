@@ -35,3 +35,7 @@ pipenv run sort
 pipenv run lint
 ```
 
+# TESTS
+```
+from main project directory, inside a terminal window enter/run `pytest`
+```
