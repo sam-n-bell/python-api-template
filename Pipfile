@@ -11,6 +11,8 @@ sqlalchemy = "*"
 fastapi = "*"
 python-dotenv = "*"
 structlog = "*"
+pytest = "*"
+httpx = "*"
 
 [dev-packages]
 black = "*"
