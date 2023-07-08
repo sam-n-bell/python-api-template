@@ -6,4 +6,3 @@ class Check(BaseModel):
     available: bool = None
     details: str = None
     name: str = None
-

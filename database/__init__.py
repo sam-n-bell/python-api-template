@@ -1,9 +1,10 @@
-import settings
 from dataclasses import dataclass
-from sqlalchemy import create_engine
+
 import structlog
-from sqlalchemy.orm import sessionmaker
-from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from sqlalchemy.orm import Session, sessionmaker
+
+import settings
 
 logger = structlog.get_logger("{{template_name}}")
 
@@ -20,12 +21,12 @@ class DatabaseConfig:
     @property
     def connection_str(self) -> str:
         return (
-            f'{self.dialect}://'
-            f'{self.user}:'
-            f'{self.password}@'
-            f'{self.host}:'
-            f'{self.port}/'
-            f'{self.db}'
+            f"{self.dialect}://"
+            f"{self.user}:"
+            f"{self.password}@"
+            f"{self.host}:"
+            f"{self.port}/"
+            f"{self.db}"
         )
 
 
@@ -36,7 +37,7 @@ def get_postgres_conn_str():
         settings.PG_PWD,
         settings.PG_HOST,
         settings.PG_PORT,
-        settings.PG_DB
+        settings.PG_DB,
     ).connection_str
 
 
@@ -54,5 +55,7 @@ def validate_db_connection(db_session: Session, database_name: str = None):
     try:
         return db_session.is_active
     except Exception as e:
-        logger.error(f'validate_db_connection_exception', db_name=database_name, error=str(e))
+        logger.error(
+            "validate_db_connection_exception", db_name=database_name, error=str(e)
+        )
         return False
