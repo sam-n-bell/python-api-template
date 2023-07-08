@@ -27,3 +27,11 @@ Connecting to the docker PG instance on your local can be done with
 3. docker-compose run {compose service that will have the py code and database creds} alembic upgrade {head || revision-hash}
 4. docker-compose run {compose service that will have the py code and database creds} alembic downgrade {-1 || revision-hash}
 
+
+# BLACK, ISORT & FLAKE8
+```
+pipenv run format
+pipenv run sort
+pipenv run lint
+```
+

@@ -1,10 +1,10 @@
 from logging.config import fileConfig
-from database.pg_models import PG_BASE
-from sqlalchemy import engine_from_config, create_engine
-from sqlalchemy import pool
+
+from sqlalchemy import create_engine
 
 from alembic import context
 from database import get_postgres_conn_str
+from database.pg_models import PG_BASE
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
@@ -62,9 +62,7 @@ def run_migrations_online() -> None:
     connectable = create_engine(url=get_postgres_conn_str())
 
     with connectable.connect() as connection:
-        context.configure(
-            connection=connection, target_metadata=target_metadata
-        )
+        context.configure(connection=connection, target_metadata=target_metadata)
 
         with context.begin_transaction():
             context.run_migrations()
