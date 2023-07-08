@@ -5,12 +5,5 @@ class Check(BaseModel):
     status: str = None
     available: bool = None
     details: str = None
-    name: str
+    name: str = None
 
-
-class DBCheck(Check):
-    pass
-
-
-class System(Check):
-    pass

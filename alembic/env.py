@@ -1,10 +1,10 @@
 from logging.config import fileConfig
-from database.pg import PG_BASE
+from database.pg_models import PG_BASE
 from sqlalchemy import engine_from_config, create_engine
 from sqlalchemy import pool
 
 from alembic import context
-from database.utils import get_postgres_conn_str
+from database import get_postgres_conn_str
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.

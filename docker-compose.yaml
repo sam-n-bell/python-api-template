@@ -20,13 +20,13 @@ services:
         volumes:
         - ./:/usr/src/app
         depends_on:
-          - {{template_name}}_postgres
+          - move_postgres
         env_file:
           - .env
 volumes:
   postgres:
 
 
-#    docker-compose run web alembic revision --autogenerate -m "First migration"
+# docker-compose run web alembic revision --autogenerate -m "First migration"
 
 # docker-compose run web alembic upgrade head
