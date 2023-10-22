@@ -1,6 +1,7 @@
 import os
 import sys
 import shutil
+import logging
 
 
 def check_for_new_directory(dir_name: str) -> str:
@@ -22,9 +23,14 @@ def copy_files(from_directory: str, to_directory: str):
     remove_file = os.path.basename(__file__)
     path = os.path.join(to_directory, remove_file)
     os.remove(path)
-    remove_file = ".env"
-    path = os.path.join(to_directory, remove_file)
-    os.remove(path)
+    other_files = [".env", "name_replacer.sh", "README.md"]
+    for file_name in other_files:
+        try:
+            path = os.path.join(to_directory, remove_file)
+            os.remove(path)
+        except Exception as e:
+            logging.error("removal_exception", str(e))
+
 
 
 if __name__ == "__main__":
