@@ -2,7 +2,7 @@ import os
 import sys
 import shutil
 import logging
-
+import stat
 
 def check_for_new_directory(dir_name: str) -> str:
     os.chdir("..")
@@ -11,32 +11,27 @@ def check_for_new_directory(dir_name: str) -> str:
     exists = os.path.exists(new_dir)
     if exists:
         raise Exception(f"Directory {new_dir} already exists!")
-    # os.makedirs(new_dir)
-    # print(f"Python making directory {new_dir}")
     return new_dir
 
 
 def copy_files(from_directory: str, to_directory: str):
     # copytree creates the new/to directory
     shutil.copytree(from_directory, to_directory)
-    print(f"files from {from_directory} copied to {to_directory}")
-    remove_file = os.path.basename(__file__)
-    path = os.path.join(to_directory, remove_file)
-    os.remove(path)
-    other_files = [".env", "name_replacer.sh", "README.md"]
-    for file_name in other_files:
+    logging.info(f"files from {from_directory} copied to {to_directory}")
+    files_to_del = ["project_setup.py", ".env", "name_replacer.sh", "README.md"]
+    for file_name in files_to_del:
         try:
-            path = os.path.join(to_directory, remove_file)
+            path = os.path.join(to_directory, file_name)
+            logging.debug(f"deleting {path}")
+            os.chmod(path, stat.S_IWRITE)
             os.remove(path)
         except Exception as e:
-            logging.error("removal_exception", str(e))
-
+            logging.error("removal_exception", file_name, str(e))
 
 
 if __name__ == "__main__":
     current_directory = os.getcwd()
     project_name = sys.argv[1]
-    # project_name = input("What do you want to call your project (ex: myproj-api)? ").strip()
     if project_name is None:
         raise Exception("bad project name, try something else")
     new_directory = check_for_new_directory(project_name)

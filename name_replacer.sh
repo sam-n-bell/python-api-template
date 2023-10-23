@@ -3,5 +3,7 @@ python project_setup.py "$NAME"
 cd ../$NAME
 find . -type f \( -name "*.yaml" -o -name "*.py" \) -exec sed -i "s/{{template_name}}/\L$NAME/g" {} +
 find . -type f \( -name "*.md" \) -exec sed -i "s/{{YourAppName}}/\L$NAME/g" {} +
-echo "New project directory $NAME created. Start coding."
-sleep 5
+rm -r -f .git
+rm -r -f .idea
+echo "New project directory $NAME created. Start coding. Window closes in 8 seconds."
+sleep 8
