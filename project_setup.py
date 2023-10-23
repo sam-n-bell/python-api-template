@@ -18,7 +18,7 @@ def copy_files(from_directory: str, to_directory: str):
     # copytree creates the new/to directory
     shutil.copytree(from_directory, to_directory)
     logging.info(f"files from {from_directory} copied to {to_directory}")
-    files_to_del = ["project_setup.py", ".env", "name_replacer.sh", "README.md"]
+    files_to_del = ["project_setup.py", ".env", "name_replacer.sh"]
     for file_name in files_to_del:
         try:
             path = os.path.join(to_directory, file_name)
