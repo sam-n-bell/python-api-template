@@ -24,7 +24,7 @@ services:
         env_file:
           - .env
 volumes:
-  postgres:
+  {{template_name}}_db:
 
 
 # docker-compose run web alembic revision --autogenerate -m "First migration"
