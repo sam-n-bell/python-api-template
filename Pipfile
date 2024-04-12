@@ -7,12 +7,14 @@ name = "pypi"
 uvicorn = {extras = ["standard"], version = "*"}
 psycopg2-binary = "*"
 alembic = "*"
-sqlalchemy = "*"
 fastapi = "*"
 python-dotenv = "*"
 structlog = "*"
 pytest = "*"
 httpx = "*"
+pydantic-settings = "*"
+asyncpg = {version = "0.29.0"}
+sqlalchemy = {version = "*", extras = ["asyncio"]}
 
 [dev-packages]
 black = "*"
