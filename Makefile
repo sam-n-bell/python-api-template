@@ -4,4 +4,4 @@ dev:
 rename:
 	@echo "Enter a project name: "; \
 	read proj_name; \
-	bash ./name_replacer.sh "$$proj_name"
+	bash ./name_replacer_mac.sh "$$proj_name"
