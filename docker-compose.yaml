@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-    {{template_name}}_db:
+    april111_db:
         image: postgres:13.8
         restart: always
         env_file:
@@ -8,10 +8,10 @@ services:
         ports:
           - '5432:5432'
         volumes:
-          - postgres:/var/lib/postgresql/data
+          - april111_db:/var/lib/postgresql/data
           # if want sql to run at startup, can use below
           # - ./sql/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
-    {{template_name}}_api:
+    april111_api:
         build:
           context: .
           target: start_app
@@ -20,11 +20,11 @@ services:
         volumes:
         - ./:/usr/src/app
         depends_on:
-          - {{template_name}}_postgres
+          - april111_db
         env_file:
           - .env
 volumes:
-  postgres:
+  april111_db:
 
 
 # docker-compose run web alembic revision --autogenerate -m "First migration"
