@@ -8,8 +8,7 @@ from sqlalchemy.orm import Session, sessionmaker
 
 import settings
 
-logger = structlog.get_logger("april111")
-
+logger = structlog.get_logger("{{template_name}}")
 
 @dataclass
 class DatabaseConfig:

@@ -20,8 +20,7 @@ run `make rename`
 ## DATABASE
 
 Connecting to the docker PG instance on your local can be done with 
-`jdbc:april111_db://localhost:{PORT}:{POSTGRES_DB}` where port and postgres_db and username/password are from `.env`
-
+`jdbc:{{YourAppName}}_db://localhost:{PORT}:{POSTGRES_DB}` where port and postgres_db and username/password are from `.env`
 ### ALEMBIC
 
 1. Make a database model change

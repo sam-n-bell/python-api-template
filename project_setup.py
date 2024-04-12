@@ -34,7 +34,6 @@ def copy_files(from_directory: str, to_directory: str):
 
 if __name__ == "__main__":
     current_directory = os.getcwd()
-    print(sys.argv)
     project_name = sys.argv[1]
     if project_name is None:
         raise Exception("bad project name, try something else")
